@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7994dc4-03b0-45b7-b32b-6a7d2523527e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="107"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="882"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="vunidades" class="java.util.List">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.String"/>
+	<parameter name="condominios" class="java.lang.Integer"/>
+	<parameter name="data1" class="java.util.Date"/>
+	<parameter name="data2" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select unidades,nomecondominio,unidade,descconta,tipo,datavencimento,valor,datapagto,if(datapagto is null,0.00,valortotal) as valortotal from v_boleto
+where condominios =  $P{condominios} 
+and $X{IN, unidades,  vunidades } 
+and datavencimento between   $P{data1}  and  $P{data2} 
+and (status!='AA' and status!='AB')
+order by unidade,datavencimento]]>
+	</queryString>
+	<field name="unidades" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomecondominio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descconta" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datavencimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datapagto" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valortotal" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="valortotal_1" class="java.math.BigDecimal" resetType="Group" resetGroup="Unidades" calculation="Sum">
+		<variableExpression><![CDATA[$F{valortotal}]]></variableExpression>
+	</variable>
+	<group name="Unidades" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{unidades}]]></groupExpression>
+		<groupHeader>
+			<band height="36">
+				<staticText>
+					<reportElement x="0" y="0" width="55" height="15" uuid="8f04fdc2-ebf5-4d80-ade8-859488ae5006"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[UNIDADES:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="55" y="0" width="497" height="15" uuid="a525be44-ce91-4492-bf41-bbb9feea486e"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{unidade}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="15" width="189" height="15" uuid="39de965e-21f7-4057-a5cc-ec16cd262e07"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DESCRICAO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="189" y="15" width="70" height="15" uuid="11002ccc-4432-420e-88f2-1cd502901c98"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TIPO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="259" y="15" width="88" height="15" uuid="0a360eb4-1ad3-43ef-b3e7-0af50dc9d02d"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATA VENC.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="347" y="15" width="64" height="15" uuid="3d486b6c-1808-46fb-8b44-5ac37b42b7d2"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="411" y="15" width="70" height="15" uuid="bb9e7f4f-c4db-4e30-a31e-85da2d4ea5ce"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATA PAGTO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="481" y="15" width="71" height="15" uuid="a357ece0-d973-4282-87c4-6831b90a18fe"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR PAGO]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="28">
+				<textField isBlankWhenNull="true">
+					<reportElement x="481" y="0" width="74" height="20" uuid="5c863cf5-3c4f-40b2-bebe-f7467a4e153f"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{valortotal_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="481" height="20" uuid="96798384-3bc8-4bd9-a348-2d3929ff4b4c"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL DA UNIDADE:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<pageHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="277" height="20" uuid="158a03b6-fd4f-4c0d-9378-0fb0e02e5a9a"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<text><![CDATA[DEMONSTRATIVO FINANCEIRO POR UNIDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="78" height="20" uuid="a3856c63-4a13-40e2-a44d-db5bb8cd5198"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONDOMINIO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="0" width="301" height="20" uuid="ce8da5e2-0b30-4b93-83fc-e032826e498c"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomecondominio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="0" width="80" height="20" uuid="d0abc077-47f2-427f-9565-a9778af9855e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="0" width="40" height="20" uuid="0c43e095-3beb-489f-930d-775748190fbb"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="122" height="20" uuid="823224e5-4181-46e4-ac3b-fc51fb43d8e1"/>
+				<textElement>
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data do Relatório:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="122" y="40" width="100" height="20" uuid="a76e3d47-bf99-410f-9d7b-e9bfa47b5b57"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="159" height="15" uuid="0f07d871-1752-411c-8b42-099d31cf8821"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descconta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="0" width="59" height="15" uuid="1cb4486d-4150-4a37-90b9-43e46eeabcae"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="481" y="0" width="71" height="15" uuid="64eb8456-f1b2-4198-ba75-4794a3190c84"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valortotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="411" y="0" width="70" height="15" uuid="041c6b19-5340-4812-9fd3-34e69acb95f3"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datapagto}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="344" y="0" width="49" height="15" uuid="8b3cada2-bfa6-4389-9b6f-f06c2264a153"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="259" y="0" width="77" height="15" uuid="b313ab0c-0595-4a28-b228-5c275c3cd776"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datavencimento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rep021" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="30" rightMargin="10" topMargin="20" bottomMargin="20" uuid="d17f8ff5-5c8e-4ee3-8b26-d45ce50d775a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="multa" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="juros" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="condominios" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="datadodia" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ultimodiaperiodo" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select nomecondominio,unidades,periodo,boleto,unidade,condominios,tipo,nomesacado,endereco,bairro,cidade,cep,cpf,nossonumero,dataemissao,datavencimento,valor,format((TO_DAYS($P{datadodia})- TO_DAYS(datavencimento+1)),0) as dias,(valor*$P{multa}) as multa,(valor*$P{juros})*(TO_DAYS($P{datadodia})- TO_DAYS(datavencimento+1)) as jurosmora,(valor+(valor*$P{multa})+(valor*$P{juros})*(TO_DAYS($P{datadodia})- TO_DAYS(datavencimento+1))) as total from v_boleto as v
+where condominios =$P{condominios}
+and datavencimento < $P{datadodia} and datacred is null and status <> "AB" and status <> "AA"
+order by unidade,unidades,datavencimento]]>
+	</queryString>
+	<field name="nomecondominio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unidades" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="boleto" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="condominios" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomesacado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nossonumero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataemissao" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datavencimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dias" class="java.lang.String"/>
+	<field name="multa" class="java.lang.Double"/>
+	<field name="jurosmora" class="java.lang.Double"/>
+	<field name="total" class="java.lang.Double"/>
+	<variable name="total_1" class="java.lang.Double" resetType="Group" resetGroup="unidades" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<group name="unidades" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{unidade}]]></groupExpression>
+		<groupHeader>
+			<band height="44">
+				<textField>
+					<reportElement uuid="dd63caf3-cf67-47bc-a3ed-e12c9aeabd4e" x="100" y="0" width="153" height="20"/>
+					<textElement>
+						<font fontName="Monospaced"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{unidade}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="493a787b-0f6c-4597-a7ee-422c2610039f" x="0" y="0" width="100" height="20"/>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[UNIDADE:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="417021f4-9014-471f-a289-1e00e69d246b" x="0" y="27" width="100" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NOME SACADO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6ca3bba7-90ca-417f-a9c4-d091e1199cd5" x="100" y="27" width="54" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TIPO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="dc6a0f43-c649-4a1c-bea7-7e27dccda07e" x="154" y="27" width="47" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PERIODO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="c9eff587-5c30-4375-a082-d37beab5967e" x="201" y="27" width="71" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VENCIMENTO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b063a2c1-a507-4a08-8686-a79a4d75501b" x="272" y="27" width="42" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DIAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="27400739-eb32-4262-8b83-86792807f800" x="314" y="27" width="64" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fb2725bd-ba04-4a27-8ec8-1d6044be95c6" x="378" y="27" width="55" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MULTA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1e182719-b05e-4499-85db-f8849d5a64bb" x="433" y="27" width="64" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[JUROS MORA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="ecf8ef98-3a71-426d-b918-5701b8f31159" x="497" y="27" width="58" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<textField pattern="#,##0.00">
+					<reportElement uuid="469af131-a25f-4050-b756-6af958fb24a6" x="455" y="0" width="100" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="3427e80b-ecef-4ea3-a34b-32cfc61979de" x="0" y="0" width="455" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" size="8"/>
+					</textElement>
+					<text><![CDATA[TOTAL DA UNIDADE:  ]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="64" splitType="Stretch">
+			<textField>
+				<reportElement uuid="ac135678-5366-4a1e-bf02-2c59265a4e77" x="0" y="0" width="309" height="20"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomecondominio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="113fd31f-e4d8-4dc6-9b2e-c5411f15d355" x="0" y="20" width="269" height="20"/>
+				<textElement>
+					<font fontName="Monospaced" size="12"/>
+				</textElement>
+				<text><![CDATA[RELATORIO DE INADIMPLENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5bbf4f38-9783-43cd-8bbf-ab6856fd339a" x="0" y="40" width="138" height="20"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA DO RELATÓRIO:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="17a0db3e-8f2f-456b-af9c-e1cc43fe989e" x="138" y="40" width="144" height="20"/>
+				<textElement>
+					<font fontName="Monospaced" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f2ae2885-785a-4379-88c6-5c53b8922ae6" x="0" y="0" width="100" height="15"/>
+				<textElement>
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomesacado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="40a52a7a-8215-4835-ab41-6dd9ef6b3844" x="101" y="0" width="53" height="15"/>
+				<textElement>
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9728c50f-241e-4ad1-80d1-84745b4a698e" x="154" y="0" width="47" height="15"/>
+				<textElement>
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="62a1ff63-e96d-4046-8d33-d679e64e9696" x="201" y="0" width="71" height="15"/>
+				<textElement>
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datavencimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a0a7cfc-cccc-4376-b395-73f7372cde93" x="272" y="0" width="42" height="15"/>
+				<textElement>
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dias}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="8a81662f-ce98-42d4-9aa9-c4377f3cfa3e" x="314" y="0" width="64" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="9783d825-5b43-4257-8f73-98263f2343df" x="378" y="0" width="55" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{multa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="6fd9c781-6908-4f16-8470-00ebb4af49a0" x="433" y="0" width="64" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jurosmora}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="fa32e455-e3ca-4790-a6c1-c33ae3c8351e" x="497" y="0" width="58" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

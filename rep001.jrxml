@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_previsao_orcamentaria" language="groovy" pageWidth="595" pageHeight="842" columnWidth="519" leftMargin="56" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40b4e587-e043-4ab4-8cde-e85ebe53e139">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<subDataset name="ds_resumo_taxas" uuid="8a22c1de-3d11-4c22-9782-c45836a1a3ee">
+		<parameter name="condominios" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select tipotaxa,sum(valor) as total from v_lancamentos_condominio
+where condominios = $P{condominios} and periodo =$P{periodo}  group by tipotaxa]]>
+		</queryString>
+		<field name="tipotaxa" class="java.lang.String"/>
+		<field name="total" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="condominios" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\aplica\\prg\\Dropbox\\bureau\\relatorios java\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT if(tipolancamento="C"," COMUNS",if(tipolancamento="G"," GERAIS",if(tipolancamento="I"," INDIVIDUAIS",""))) as tipolanc,vw.* FROM v_lancamentos_condominio as vw WHERE condominios = $P{condominios} and periodo = $P{periodo} order by tipolancamento,descricao]]>
+	</queryString>
+	<field name="tipolanc" class="java.lang.String"/>
+	<field name="urllogo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomecondominio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lancamentoscondominio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="condominios" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codtemp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipolancamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipotaxa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datalancamento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="leitura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valororiginal" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="_chave" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numconta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desc_conta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="valor_1" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<variable name="valor_2" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<variable name="valor_3" class="java.lang.Float" resetType="Group" resetGroup="tipo_lancamento" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<group name="tipo_lancamento">
+		<groupExpression><![CDATA[$F{tipolancamento}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<staticText>
+					<reportElement uuid="bbca90e1-d85e-47d7-bb3f-9c88c3a87342" x="0" y="0" width="68" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DESPESAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6029a080-4cf6-4e7e-b1c6-2281cf4c11d8" x="406" y="0" width="113" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="0cb61152-1ae4-4031-add5-0a831b12ef86" x="68" y="0" width="338" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipolanc}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<staticText>
+					<reportElement uuid="2e1766e3-16fb-4799-9f60-adfac59e6876" x="0" y="0" width="316" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL DESPESAS ]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="5996acb1-bf44-4473-90c7-6a2fb55e4038" x="315" y="0" width="85" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipolanc}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="cc7e816c-ce9b-41ed-a261-1da54ba9dd46" x="399" y="0" width="120" height="15"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{valor_3}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="39491e27-b80b-4611-b774-91a177bfd2bc" x="105" y="23" width="280" height="20"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[RATEIO DE DESPESAS P/ CÁLCULO TX. COND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f34e0920-7630-41ad-bef0-74b927069356" x="394" y="23" width="60" height="20"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERIODO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9bef0788-f897-4795-9e71-65475ae7b82d" x="459" y="23" width="60" height="20"/>
+				<textElement>
+					<font fontName="Monospaced" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8b08051c-ab6f-438f-aeca-fea31198a9f4" x="105" y="47" width="91" height="15"/>
+				<textElement>
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA EMISSÃO:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="ee9d88d1-d010-4e39-8fa4-155f0ced4bf2" x="201" y="47" width="114" height="15"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b07c3fe4-e90d-4c1d-8ac8-8feb40505390" x="105" y="0" width="411" height="20"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomecondominio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5520d857-35cc-473a-86da-7a81af7c2f24" x="451" y="44" width="28" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="306a07da-119b-4927-9729-232a9610b1eb" x="479" y="44" width="40" height="20"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1b9572ec-e71c-48c3-b67a-708c74111489" x="394" y="44" width="53" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAGINAS:]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="f6aea3c2-3ae1-4ce2-be30-1f3aea0e1b3f" x="0" y="0" width="100" height="60"/>
+				<imageExpression><![CDATA[$F{urllogo}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement uuid="50a7750a-5ac0-4ed5-aecf-1ecb61d705e6" x="0" y="0" width="400" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="36be2754-5fd9-4e72-9877-c7a87d2f545c" x="399" y="0" width="120" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="98">
+			<subreport>
+				<reportElement uuid="a76de8d9-9482-4109-9d20-2616358a6568" x="0" y="56" width="516" height="42"/>
+				<subreportParameter name="condominios">
+					<subreportParameterExpression><![CDATA[$P{condominios}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="periodo">
+					<subreportParameterExpression><![CDATA[$F{periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rel_previsao_resumo_orcamentaria.jasper"]]></subreportExpression>
+			</subreport>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="5314e1a5-cc29-4083-962f-b2e70c79f7a3" x="400" y="0" width="119" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{valor_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ae558e3d-8d96-444e-8564-289f8bf62a2c" x="2" y="0" width="398" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL GERAL:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rep029" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" scriptletClass="com.bureau.Sl029" uuid="b74d9618-0173-4b48-986b-7e60ed5db7a3">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="12"/>
+	<property name="ireport.y" value="290"/>
+	<property name="ireport.callouts" value="##Sat Mar 15 12:56:28 BRT 2014"/>
+	<subDataset name="ds_boletosnegociados" uuid="4d9652aa-28a3-49fb-b69d-08fa1bf7fe20">
+		<parameter name="acordo" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select * from boleto where acordo=$P{acordo} and status='AA' order by datavencimento]]>
+		</queryString>
+		<field name="boleto" class="java.lang.Long">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="unidades" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="condominios" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="financeiro" class="java.lang.Long">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="valor" class="java.lang.Float">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="periodo" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nomesacado" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="endereco" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="bairro" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cidade" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="estado" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cep" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dataemissao" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="datapararemessa" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="datavencimento" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="datapagto" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="codtemp" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="tipo" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cpf" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="codbarra" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="localpag" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nomecedente" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="codcedente" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nossonumero" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dacnn" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="carteira" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="especie" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="quantidade" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="instrucoes1" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="instrucoes2" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="numdoc" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="aceite" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="coddigita" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="banconome" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="agencia" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="banco" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="numconta" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="despesas" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="email" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="multa" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="valortotal" class="java.lang.Float">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="desconto" class="java.lang.Float">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="contas" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="selecao" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="mora" class="java.lang.Float">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="datacred" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="arquivo" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="datareg" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="hora" class="java.sql.Time">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dataprocesso" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="processado" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dacconta" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="selecionado" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="rejeitado" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="codultimaocor" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="status" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="tipobaixa" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="linharemessa" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="linharetorno" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nomearquivo" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="acordo" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="_chave" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="tipocadastro" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="numacordo" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="statusanterior" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="tipoboleto" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="tipoemissao" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="arquivoretorno" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="statusb" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="totalmulta" class="java.lang.Double">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="totaljuros" class="java.lang.Double">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="acordo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/dados/report/bureauweb/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select a.*,e.documento,e.cidade from vw_acordo a, enderecos e where a.enderecos=e.enderecos and  acordo=$P{acordo} group by acordo;]]>
+	</queryString>
+	<field name="nomecondominio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acordo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="condominios" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unidades" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usuario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datareg" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomesacado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valortotal" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numparcelas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saldo" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataquitacao" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codtemp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="detalhamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="enderecos" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="multa" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="moradiaria" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jurosmes" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoacordo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acrescimo" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acrescimodesc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desconto" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descontodesc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodoacordo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acordoitens" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datavencimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numdoc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datapagto" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorpagto" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="parcela" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="grupoa">
+		<groupExpression><![CDATA[$F{nomecondominio}]]></groupExpression>
+		<groupHeader>
+			<band height="29">
+				<componentElement>
+					<reportElement x="0" y="0" width="555" height="16" uuid="090bb991-1b83-4762-a8d7-17c6fef96450"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="ds_boletosnegociados" uuid="8c255092-8f2b-4685-a5a4-a9d9a9542ce7">
+							<datasetParameter name="acordo">
+								<datasetParameterExpression><![CDATA[$P{acordo}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="16" width="555">
+							<textField>
+								<reportElement x="40" y="0" width="100" height="15" uuid="bcabc43b-14a9-4ce5-8277-6f60a61d5283"/>
+								<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+							</textField>
+							<textField pattern="dd/MM/yyyy">
+								<reportElement x="140" y="0" width="100" height="15" uuid="750d65d8-e053-4779-a82f-40a87ee5e8ab"/>
+								<textFieldExpression><![CDATA[$F{datavencimento}]]></textFieldExpression>
+							</textField>
+							<textField pattern="#,##0.00">
+								<reportElement x="240" y="0" width="100" height="15" uuid="62754285-5ad8-4456-af9d-9a37d6563f0d"/>
+								<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+							</textField>
+							<textField pattern="#,##0.00;-#,##0.00">
+								<reportElement x="340" y="1" width="68" height="14" uuid="8892c959-2c8d-4cc4-904a-ee906afe152e"/>
+								<textFieldExpression><![CDATA[$F{totalmulta}]]></textFieldExpression>
+							</textField>
+							<textField pattern="#,##0.00;-#,##0.00">
+								<reportElement x="411" y="1" width="51" height="15" uuid="36426817-d853-4a3f-ab0a-93a0b99d685c"/>
+								<textFieldExpression><![CDATA[$F{totaljuros}]]></textFieldExpression>
+							</textField>
+							<textField pattern="#,##0.00;-#,##0.00">
+								<reportElement x="462" y="0" width="84" height="15" uuid="2e2772b5-0171-4abb-afb3-4132fca545ea"/>
+								<textFieldExpression><![CDATA[$F{valortotal}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</band>
+			<band height="78">
+				<staticText>
+					<reportElement x="0" y="0" width="555" height="20" uuid="1980c926-d3cf-4c55-be2c-2376c1f7292c"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Valor total da d?vida:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="18" width="555" height="20" uuid="657a591e-5d71-487b-8c67-510a201a1fe0"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.porExtenso($F{valortotal}).toUpperCase()]]></textFieldExpression>
+				</textField>
+				<textField pattern="? #,##0.00">
+					<reportElement x="0" y="28" width="555" height="20" uuid="2803ec73-fee8-461d-9015-6d60c8afb9c6"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valortotal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="48" width="130" height="15" uuid="fad9fde7-e8a7-4529-b928-c4d9749b7e5c"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Forma de pagamento:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="130" y="48" width="425" height="15" uuid="78eecf2e-059f-4541-a669-ee6e4c750127"/>
+					<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.getFormaPagamento($P{acordo})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="grupob">
+		<groupExpression><![CDATA[$F{nomecondominio}]]></groupExpression>
+		<groupHeader>
+			<band height="117">
+				<staticText>
+					<reportElement x="0" y="0" width="555" height="110" uuid="38e7db82-03ce-4446-be48-0a7ba1368120"/>
+					<textElement textAlignment="Justified" markup="styled">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Fica convencionado que:
+
+1 - Pagamentos efetuados atrav?s de cheques s? ser?o considerados quitados ap?s efetiva compensa??o banc?ria dos mesmos.
+2 - Os pagamentos dever?o ser efetuados impreterivelmente at? o vencimento.
+3 - A falta de pagamento de qualquer uma das parcelas at? a data estipulada implicar? na cobran?a judicial de todo o d?bito ainda existente.
+4 - O Compromiss?rio devedor dever? continuar pagando taxas de condom?nio vincendas, e que a falta de pagamento ou atraso das mesmas, implicar? nas penalidades previstas na cl?usula acima.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="grupoc">
+		<groupExpression><![CDATA[$F{nomecondominio}]]></groupExpression>
+		<groupHeader>
+			<band height="41">
+				<textField>
+					<reportElement x="0" y="0" width="555" height="27" uuid="dd944422-5284-4267-89f7-83b6f1b40519"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression><![CDATA["E por estarem assim compromissados, ".concat($F{nomesacado}).concat(", e ")
+.concat($F{nomecondominio}).concat(", firmam o presente termo em duas vias de igual teor.")]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="grupod">
+		<groupExpression><![CDATA[$F{nomecondominio}]]></groupExpression>
+		<groupHeader>
+			<band height="41">
+				<textField>
+					<reportElement x="0" y="0" width="555" height="21" uuid="6c6195ea-8917-4857-a9bc-79929b612444"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{cidade}.concat(", ").concat($P{REPORT_SCRIPTLET}.dataPorExtenso(null))]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="202" splitType="Stretch">
+			<textField>
+				<reportElement x="94" y="160" width="127" height="15" uuid="2aa838a7-5067-4525-997d-e282caff7a85"/>
+				<textFieldExpression><![CDATA[$F{documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="60e7162c-1626-4f13-a2d4-bce6aa0e8699"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomecondominio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="94" y="128" width="333" height="15" uuid="53e8474a-1e25-4cfb-9a61-25ee96f20258"/>
+				<textFieldExpression><![CDATA[$F{nomesacado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="128" width="94" height="15" uuid="8c651634-236e-4b73-89a6-c5b638f7b033"/>
+				<text><![CDATA[Compromiss?rio]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="144" width="127" height="15" uuid="ebd40ae9-3957-4449-a983-0efca7f759fa"/>
+				<textFieldExpression><![CDATA[$F{unidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="20" uuid="201b5d33-63b9-437c-b1a2-a1af5df9aa2b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERMO DE COMPROMISSO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="555" height="70" uuid="b6a92cfc-bde3-4436-a671-2758f00520a9"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Pelo presente instrumento de Compromisso de Assun??o de D?vida, o(a) abaixo assinado(a), cuja identifica??o e dados encontram-se a seguir, reconhece como l?quida, certa e exig?vel, a d?vida ora mencionada para com este Condom?nio, relativa a taxas condominiais em atraso, assumindo o compromisso de proceder a sua quita??o, conforme demonstrativo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="144" width="94" height="15" uuid="aeb9bd17-54af-43f4-b8e0-38bba740f623"/>
+				<text><![CDATA[Resp.p/Unidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="94" height="15" uuid="be258834-0540-4915-8fac-71819fcdc161"/>
+				<text><![CDATA[CPF ou CNPJ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="187" width="100" height="15" uuid="76d2a96d-e433-4994-844b-c6c8eb17e04f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periodo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="187" width="100" height="15" uuid="5b9cde77-1067-43dd-a88a-06bf6db745c1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="187" width="100" height="15" uuid="ef83ac84-a314-49d8-aa9d-ebc144f33555"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="187" width="69" height="15" uuid="34d5adb7-d2f2-4570-98af-f4792fe1bd4f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Multa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="187" width="52" height="15" uuid="a417517f-e681-4a90-89a0-dce673335b83"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Juros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="187" width="52" height="15" uuid="7f9c57f4-fa61-48ec-a96b-530a24e8d693"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="145">
+			<textField>
+				<reportElement x="159" y="0" width="291" height="20" uuid="c706d643-4e9b-45bb-9068-42a83b622479"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nomesacado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="35" width="289" height="39" uuid="9cd2df7e-a4a7-4998-8e62-3bea54f16251"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.getNomeSindico($F{condominios}).concat("\nS?ndico(a)")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="94" width="100" height="20" uuid="3224c323-807e-4ee2-a4d3-6cac4ab396f0"/>
+				<text><![CDATA[Testemunhas:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="133" width="240" height="1" uuid="50cd9890-ff9f-4e65-8870-646b8238b417"/>
+			</line>
+			<line>
+				<reportElement x="310" y="133" width="240" height="1" uuid="7f1e5401-aa6b-42c3-8167-654dd7d6dd52"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_recebimentos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="519" leftMargin="56" rightMargin="20" topMargin="20" bottomMargin="20" uuid="73a7ee38-d99c-4ab4-bd47-0445830b81b5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="208"/>
+	<property name="ireport.y" value="15"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="condominios" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ultimodiaperiodo" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/dados/report/bureauweb/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from vw_credito_boletos
+where condominios =$P{condominios}
+and periodo = $P{periodo}
+order by contas,bloco,unidade]]>
+	</queryString>
+	<field name="urllogo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomecondominio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unidades" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="multa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desconto" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valortotal" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datavencimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vmulta" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numconta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desc_conta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bloco" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quadra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lote" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="financeiro" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="condominios" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="boleto" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usuario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datareg" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datacred" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ndoc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipodoc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="credito" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="debito" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipomovimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codtemp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="imp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saldomb" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saldofc" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ctdc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="_chave" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acordo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acordoitem" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nperiodo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="smora" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="smulta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="credito_1" class="java.lang.Double" resetType="Group" resetGroup="contas" calculation="Sum">
+		<variableExpression><![CDATA[$F{credito}]]></variableExpression>
+	</variable>
+	<variable name="credito_2" class="java.lang.Double" resetType="Group" resetGroup="bloco" calculation="Sum">
+		<variableExpression><![CDATA[$F{credito}]]></variableExpression>
+	</variable>
+	<variable name="credito_3" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{credito}]]></variableExpression>
+	</variable>
+	<variable name="valor_1" class="java.math.BigDecimal" resetType="Group" resetGroup="bloco" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<variable name="vmulta_1" class="java.math.BigDecimal" resetType="Group" resetGroup="bloco" calculation="Sum">
+		<variableExpression><![CDATA[$F{vmulta}]]></variableExpression>
+	</variable>
+	<group name="contas" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{contas}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<textField>
+					<reportElement x="100" y="0" width="419" height="20" uuid="b31f0124-e7d0-4bcc-8beb-1c193e744bdb"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{desc_conta}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="100" height="20" uuid="f3b0c40c-e98a-4ee1-9080-8d0002752519"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numconta}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="16">
+				<staticText>
+					<reportElement x="322" y="0" width="97" height="15" uuid="80fbe6e7-63ac-41a8-918b-5e7ab5d81536"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL DA CONTA:]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="419" y="0" width="100" height="15" uuid="d9275597-0a94-4982-9810-87bdc1e2523a"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{credito_1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="322" height="15" uuid="b6e4bc67-3fca-43cc-bd6e-a27b487e7e46"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{desc_conta}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="bloco">
+		<groupExpression><![CDATA[$F{bloco}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement x="0" y="16" width="100" height="15" uuid="3639f0f3-2a6e-472a-afad-de987e6e89b1"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[  UNIDADE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="100" y="16" width="65" height="15" uuid="a0fa950a-ce73-4e93-a71a-0a1339b6b83f"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DT VENC.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="165" y="16" width="90" height="15" uuid="71f08005-62d2-45af-932a-9d0fca7146bf"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DT. CREDITO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="320" y="16" width="55" height="15" uuid="a77e05a4-c5a0-4ee8-955e-44ae8c7df852"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ACRESCIMO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="375" y="16" width="60" height="15" uuid="92715717-a78e-4ad5-b926-3a9684d5437d"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DESCONTO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="255" y="16" width="65" height="15" uuid="29ec980b-72b9-4b45-b915-dc6220215a68"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="435" y="16" width="84" height="15" uuid="044ec287-9b8e-41c1-8e93-84b55076136e"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CREDITO]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="81" y="0" width="438" height="15" backcolor="#CCCCCC" uuid="f4d561f7-cb21-4914-b1ce-e1e7d6e816d8"/>
+					<textElement>
+						<font fontName="Monospaced"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{bloco}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="81" height="15" backcolor="#CCCCCC" uuid="20e2b62d-380d-4682-8b17-f35d93641eb2"/>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<textField pattern="#,##0.00">
+					<reportElement x="435" y="0" width="84" height="15" uuid="f9711740-a5b6-4369-a2be-7924804fef51"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{credito_2}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="255" height="15" uuid="b39939bc-3a40-45b6-b634-01fde2f78194"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL DO BLOCO ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="376" y="0" width="59" height="15" uuid="7ab56b40-64c2-410c-b9b9-5eed42dd11c3"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{bloco}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="255" y="0" width="67" height="15" uuid="c37eb227-f21e-4778-88ad-e07eed70e2b7"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{valor_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="322" y="0" width="53" height="15" uuid="af3b162c-6000-46d4-a901-db3bc3eee990"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vmulta_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="76" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="192" y="39" width="100" height="15" uuid="1a390942-4c35-424b-ada2-2204edf38ff1"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="20" width="82" height="20" uuid="10e34f97-0238-4203-9276-234170d631d3"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="39" width="81" height="15" uuid="77d80fa4-89d4-4355-a48e-ed5cd5df2e79"/>
+				<textElement>
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA EMISSAO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="20" width="203" height="16" uuid="2ab4e684-fd52-4349-be4e-26f597646c5f"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[RELATORIO DE RECEBIMENTOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="0" width="405" height="20" uuid="29e98b0a-a537-4a8b-aba8-480cd3bd4d01"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomecondominio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="372" y="20" width="61" height="20" uuid="dcda708b-3c6e-4a06-8b6c-0af269a8c779"/>
+				<textElement>
+					<font fontName="Monospaced" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERIODO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="396" y="56" width="80" height="20" uuid="4e52c2be-a9bf-4436-9ed8-e0d613485939"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PAGINA: "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="477" y="56" width="40" height="20" uuid="bce2d09f-5e8b-4512-8bc5-f8d86c3b30ac"/>
+				<textElement>
+					<font fontName="Monospaced" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="56" width="42" height="15" uuid="f7c863d6-090f-41d7-9c4e-f06d39d6a274"/>
+				<textElement>
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MULTA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="157" y="56" width="77" height="15" uuid="ffb3bd93-2b33-4af5-baf8-b8ebeae26304"/>
+				<textFieldExpression><![CDATA[$F{smulta}.concat("%")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="56" width="61" height="15" uuid="cc45f470-0400-4662-bb66-930a509cd4d2"/>
+				<textFieldExpression><![CDATA[$F{smora}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="238" y="56" width="75" height="15" uuid="2130ba8d-94ac-4f5c-b0bc-fcab35f2281b"/>
+				<textElement>
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MORA DIARIA:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="100" height="60" uuid="5821dfd8-41ee-470b-b63a-41b85a5f53ae"/>
+				<imageExpression><![CDATA[$F{urllogo}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="435" y="0" width="84" height="15" uuid="fc8a8dee-05ef-4459-93e2-cfafec7ed458"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credito}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="100" y="0" width="65" height="15" uuid="65389864-fe31-4dfb-97a3-5246e97993a8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datavencimento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="320" y="0" width="55" height="15" uuid="036bc9b5-bedd-4f44-8c94-7c8667ec5bd5"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vmulta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="375" y="0" width="60" height="15" uuid="22d4cd88-e597-4466-a94e-0e1627ecddd1"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desconto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="0" width="81" height="15" uuid="3d410d42-6529-4e0c-acdc-0d6d1923da5f"/>
+				<textFieldExpression><![CDATA[$F{unidade}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="255" y="0" width="65" height="15" uuid="4ac68cee-1a85-4786-bb48-58f6284ef34c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="165" y="0" width="90" height="15" uuid="5f62d100-7c2a-4eaa-85ba-0f57265d049b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datacred}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="237">
+			<textField pattern="#,##0.00">
+				<reportElement x="419" y="0" width="100" height="20" uuid="3cc467e9-3a88-4e34-89e1-b38c160aa55c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{credito_3}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="291" y="0" width="128" height="20" uuid="9d56d7c3-51d8-40bb-887e-6c54dbdb74c7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE CREDITOS:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="89" width="515" height="100" uuid="b1b890f4-265d-47b7-91c1-edc6a49fd09c"/>
+				<subreportParameter name="periodo">
+					<subreportParameterExpression><![CDATA[$P{periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="condominios">
+					<subreportParameterExpression><![CDATA[$P{condominios}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ultimodiaperiodo">
+					<subreportParameterExpression><![CDATA[$P{ultimodiaperiodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rep041.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="69" width="136" height="20" uuid="2f9993ce-9847-458d-92d5-fe0b9bff1d23"/>
+				<textElement>
+					<font fontName="Monospaced" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[LANCAMENTO FUTUROS:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

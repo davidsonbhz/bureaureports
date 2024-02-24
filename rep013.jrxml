@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relf_financeiro_analitico" language="groovy" pageWidth="595" pageHeight="842" columnWidth="540" leftMargin="50" rightMargin="5" topMargin="25" bottomMargin="5" scriptletClass="com.bureau.Sl013" uuid="18d35029-0567-4e85-8daf-8f0ddad38f6e">
+	<property name="ireport.zoom" value="1.366026910730141"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="9"/>
+	<property name="ireport.callouts" value="##Thu Jun 21 13:30:35 BRT 2012"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<subDataset name="ds_sumario" uuid="c91a587f-28d8-45b4-b604-e3cf57b11e70">
+		<parameter name="condominios" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="saldoinicial" class="java.lang.Double"/>
+		<queryString>
+			<![CDATA[select * from relatoriofinanceiro where condominios=$P{condominios} and periodo=$P{periodo}]]>
+		</queryString>
+		<field name="relatoriofinanceiro" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="condominios" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="usuario" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="periodo" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="saldofc" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="saldomb" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="resumo" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="observacao" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="_chave" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="condominios" class="java.lang.Integer"/>
+	<parameter name="periodo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[05/2012]]></defaultValueExpression>
+	</parameter>
+	<parameter name="saldoinicial" class="java.lang.Double"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT c.nomecondominio,vf.desc_conta,vf.ctdc,IF(vf.ctdc="C","CREDITO","DEBITO") as desc_descricaolanc,sum(vf.credito) as credito,sum(vf.debito) as debito,
+vf.descricao
+FROM v_financeiro as vf,condominios as c
+where vf.condominios = c.condominios
+and vf.condominios = $P{condominios}
+and vf.periodo = $P{periodo} and vf.sintetico='S'
+group by vf.ctdc,vf.contas
+order by vf.ctdc,vf.desc_conta]]>
+	</queryString>
+	<field name="nomecondominio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desc_conta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ctdc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desc_descricaolanc" class="java.lang.String"/>
+	<field name="credito" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="debito" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="debito_1" class="java.lang.Double" resetType="Group" resetGroup="grupo_contas_soma" calculation="Sum">
+		<variableExpression><![CDATA[$F{debito}]]></variableExpression>
+	</variable>
+	<variable name="credito_2" class="java.lang.Double" resetType="Group" resetGroup="grupo_contas_soma" calculation="Sum">
+		<variableExpression><![CDATA[$F{credito}]]></variableExpression>
+	</variable>
+	<variable name="msaldo" class="java.lang.String"/>
+	<group name="grupo_contas_soma" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{ctdc}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="d9376392-1ba7-4626-b3a6-90fe3ba11618" x="0" y="0" width="57" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ctdc}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="77061cd9-39ca-4dc3-b85f-598333e89979" x="286" y="0" width="87" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CREDITO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="764bc968-328d-4afd-859c-5e84df57f1b3" x="373" y="0" width="100" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DEBITO]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="9d10def7-630a-4ad7-a863-fe0a36390622" x="57" y="0" width="229" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Monospaced"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{desc_descricaolanc}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="22">
+				<staticText>
+					<reportElement uuid="6b459ec8-023c-41c2-8744-fbc50073d7db" x="0" y="0" width="286" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAIS:]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="142da74d-c94f-4505-9c28-8cff6cbe3c22" x="286" y="0" width="87" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{credito_2}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="f3df8d0a-9371-482e-b12d-d6ebfc34170f" x="373" y="0" width="100" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Monospaced" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{debito_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="85" splitType="Stretch">
+			<textField>
+				<reportElement uuid="00c66b76-e9c8-448a-8c73-84fa44a38fc0" x="0" y="0" width="516" height="20"/>
+				<textElement>
+					<font size="15" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomecondominio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="30734c3a-7073-4eef-9d74-b5ba1df845cd" x="401" y="29" width="50" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAGINA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d795cd6b-9a48-4682-93ee-60b7def9b7c9" x="451" y="29" width="26" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e5a53b7b-cc8f-4285-94bf-da68aac5513e" x="477" y="29" width="12" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="35679a3e-76a4-480c-8998-2a324cec4519" x="489" y="29" width="48" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="732194d1-74c8-4d34-bc51-19db78d5f039" x="0" y="26" width="242" height="14"/>
+				<textElement/>
+				<text><![CDATA[RELATORIO FINANCEIRO SINTÉTICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f6eaae8c-065c-48e4-8a9d-7ae57ffb0b2e" x="157" y="50" width="129" height="13"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA DO RELATÓRIO:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="3827abf2-b0a2-4826-9053-b8dc3e5999e4" x="286" y="50" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f6eaae8c-065c-48e4-8a9d-7ae57ffb0b2e" x="0" y="50" width="57" height="13"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERIODO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="21778f9f-0402-402b-9463-21fadcb80cbd" x="57" y="50" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="86f53ed0-d767-4c1b-8a49-5a83185dac14" x="2" y="66" width="119" height="13"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALDO INICIAL:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="a1fe71d2-7547-40d2-9627-a38de8fc7178" x="126" y="66" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{saldoinicial}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement uuid="21a6e595-4eb1-45cb-a708-c0e582247337" stretchType="RelativeToBandHeight" x="286" y="0" width="87" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credito}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement uuid="a213152b-563f-43b2-a8e1-6940d30df161" x="373" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{debito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1a63b70f-25fd-4bdf-9f88-909534fc0db1" x="0" y="0" width="286" height="15"/>
+				<textElement>
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desc_conta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="34"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="50">
+			<subreport runToBottom="true">
+				<reportElement uuid="2a9a0af6-d6b5-4595-9838-9236d1ae7c58" x="2" y="0" width="514" height="37"/>
+				<subreportParameter name="condominios">
+					<subreportParameterExpression><![CDATA[$P{condominios}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/rodape.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="96">
+			<staticText>
+				<reportElement uuid="fd29a165-5fda-4fb7-bcfc-06214d2b690e" x="283" y="0" width="100" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALDO FINAL:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement uuid="eec7d134-4732-4274-9cef-0ad6e70cc194" x="386" y="0" width="84" height="15"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.getSaldoFinal($P{saldoinicial},$P{periodo}.toString(),$P{condominios})]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="e4e39024-8d1a-4aee-8a8a-dc6db3925e74" x="0" y="26" width="535" height="59"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="ds_sumario" uuid="c272f052-ef17-409e-ac3a-c207b137ed6a">
+						<datasetParameter name="condominios">
+							<datasetParameterExpression><![CDATA[$P{condominios}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="saldoinicial">
+							<datasetParameterExpression><![CDATA[$P{saldoinicial}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="59" width="535">
+						<textField isStretchWithOverflow="true">
+							<reportElement uuid="3ab028e8-b1b4-4e54-9a86-744fc695815f" x="0" y="6" width="535" height="13"/>
+							<textElement markup="none">
+								<font fontName="Monospaced" size="10" pdfFontName="Courier"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{resumo}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>
